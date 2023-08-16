@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <title>Poupe+ Homepage</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css" />
+    
+</head>
+<body>
+    <header>
+            <div class="header">
+                <div class="logo">
+                    <div><img src="logo.png" alt="" width="130px"></div>
+                </div>
+                <div class="menu">
+                    <img class="menu-opener" src="assets/img/menu.png" />
+                    <nav>
+                        <ul>
+                            <li class="active"><a href="">Home</a></li>
+                            <li><a href="gastos.html" id="gastosHeader">Seus Gastos</a></li>
+                            <li><a href="login.html" id="loginHeader">Login</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+    </header>
+    
+    <main>
+
+        <section class="info-main">
+            <div class="poupar-info">
+                <h3>Porque poupar ?</h3>
+                <p><b>A parcela de famílias com dívidas, em atraso ou não, chegou a quase 80% em novembro de 2022.</b> Diante desse cenário, o objetivo dessa plataforma é te ajudar a controlar sua vida financeira possibilitando planejar com segurança seu futuro.
+                </p>
+            </div>
+            <div class="instruction-info">
+              
+              
+              <ol class="ol1"> 
+                <h3>Instruções de Uso</h3>
+                  <li>Cadastre-se e faça login na página de <a href="login.html" id="loginLink">login</a>.</li>
+                  <li>Nesta página inicial, você pode cadastrar suas fontes de renda, objetivos e gastos usando os formulários abaixo.</li>
+                  <li>No primeiro formulário, localizado na parte inferior da página, você pode cadastrar suas diferentes fontes de renda.</li>
+                 </ol>
+                 <ol class="ol2" start="4">
+                  <li>No formulário de objetivos, escolha um valor para o seu orçamento mensal e poupe o que sobrar. Você também pode definir um valor fixo a ser poupado, seja uma porcentagem da sua renda ou um valor específico.</li>
+                  <li>Ao lado do formulário de objetivos, cadastre seus gastos, fornecendo um nome, uma categoria e o valor de cada um deles.</li>
+                  <li>Na página <a href="gastos.html" id="gastosLink">Seus Gastos</a>, você pode visualizar seus dados e ver gráficos representando a valorização do seu dinheiro.</li>
+              </ol>
+    
+              
+          </div>
+          
+        </section>
+        <section class="forms">
+          <section class="renda-form">
+            <div class="box-form-renda">
+                <div class="form-content">
+                    <h2>Fontes de renda</h3>
+                    <p><b>Aviso</b> campos não preenchidos seram zerados.</p>
+                    <div class="form">
+                        <input type="text" id="salario" name="salario" autocomplete="off" required />
+                        <label for="salario" class="label-name">
+                          <span class="content-name">
+                            Salário Mensal
+                          </span>
+                        </label>
+                      </div>
+                      
+                      <div class="form">
+                        <input type="text" inputmode="numeric" pattern="[0-9.]+" id="extra" name="extra" autocomplete="off" required />
+                        <label for="extra" class="label-name">
+                          <span class="content-name">
+                            Hora Extra
+                          </span>
+                        </label>
+                      </div>
+
+                      <div class="form">
+                        <input type="text" id="bonificacoes" name="bonificacoes" autocomplete="off" required />
+                        <label for="bonificacoes" class="label-name" >
+                          <span class="content-name">
+                            Bonificações
+                          </span>
+                        </label>
+                      </div>
+                      <div class="form">
+                        <input type="text" id="freelancing" name="freelancing" autocomplete="off" required />
+                        <label for="freelancing" class="label-name" >
+                          <span class="content-name">
+                            Freelancing
+                          </span>
+                        </label>
+                      </div>
+                    <div class="btn-area2">
+                    <div class="button" id="submitRenda" type="button">
+                        <div class="button__line"></div>
+                        <div class="button__line"></div>
+                        <span class="button__text">CONFIRMAR</span>
+                        <div class="button__drow1"></div>
+                        <div class="button__drow2"></div>
+                    </div>
+                    <p class="aaa">/</p>
+                    <a href="gastos.html">
+                  </a>
+                </div>
+               </div>  
+            </div>
+        </section>
+        <section class="objetivos-form" >
+            <div class="box-form">
+                <div class="form-content">
+                    <h2>Objetivos</h3>
+                      <select  id="escolhaModo" >
+                        <option value="1" id="modo1"><h3 >Definir Orçamento</h3></option>
+                        <option value="2" id="modo2"><h3>Quanto você quer poupar?</h3></option>
+                      </select>
+                      
+                      <div class="form" id="escolherOrcamento">
+                        <input type="text" name="text" autocomplete="off" required inputmode="numeric" pattern="[0-9.]+" class="form-control" id="valorOrcamento" />
+                        <label for="text" class="label-name">
+                          <span class="content-name">
+                            Orçamento
+                          </span>
+                        </label>
+                      </div>
+                      <div class="form" id="escolherValorFixo">
+                        <select id="valorFixoEscolha" class="select ">
+                          <option selected value="%">%</option>
+                          <option value="$">$</option>
+                        </select>
+                        <input type="text" name="text" autocomplete="off" required inputmode="numeric" pattern="[0-9.]+" class="form-control" id="valorFixo" />
+                        <label for="text" class="label-name">
+                          <span class="content-name2">
+                            valor fixo ou porcentagem
+                          </span>
+                        </label>
+                      </div>
+                  <!--  <div id="escolherOrcamento">
+                        <div class="form">
+                          <input type="text" name="text" autocomplete="off" required inputmode="numeric" pattern="[0-9.]+" class="form-control" id="valorOrcamento" />
+                          <label for="text" class="label-name">
+                            <span class="content-name">
+                              Orçamento
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                      <div id="escolherValorFixo">
+                        <div class="form">
+                          <select id="valorFixoEscolha">
+                            <option selected value="%">%</option>
+                            <option value="$">$</option>
+                          </select>
+                          <input type="text" name="text" autocomplete="off" required inputmode="numeric" pattern="[0-9.]+" class="form-control" id="valorFixo" />
+                          <label for="text" class="label-name">
+                            <span class="content-name">
+                              valor fixo ou porcentagem
+                            </span>
+                          </label>
+                        </div>
+                      </div>
+                      --> 
+                      <h3>Sua meta financeira é:</h3>
+                      <div class="form">
+                        <input type="text" name="text" autocomplete="off" required inputmode='numeric' pattern="[0-9.]+" class="form-control" id="metaF" />
+                        <label for="text" class="label-name">
+                          <span class="content-name">
+                            Meta Financeira
+                          </span>
+                        </label>
+                      </div>
+                      <div class="range-area">
+                      <h3>Em quanto tempo ? <span id="valorSlider"></span> anos</h3>
+                      <div  id="slider"></div>
+                    </div>
+                    <div class="button" id="orcamentoSubmit" >
+                        <div class="button__line"></div>
+                        <div class="button__line"></div>
+                        <span class="button__text">CONFIRMAR</span>
+                        <div class="button__drow1"></div>
+                        <div class="button__drow2"></div>
+                    </div>
+               </div>  
+            </div>
+        </section>
+        <section class="gastos-form">
+            <div class="box-form">
+                <div class="form-content">
+                    <h2>Cadastre seus Gastos</h3>
+                   
+                    <div class="form">
+                        <input type="text" id="gastoNome" name="gastoNome" autocomplete="off" required />
+                        <label for="gastoNome" class="label-name">
+                          <span class="content-name">
+                            Nome
+                          </span>
+                        </label>
+                      </div>
+                      
+                      <div class="form">
+                        <input type="text" inputmode="numeric" pattern="[0-9.]+" id="gastoValor" name="gastoValor" autocomplete="off" required />
+                        <label for="gastoValor" class="label-name">
+                          <span class="content-name">
+                            Valor
+                          </span>
+                        </label>
+                      </div>
+
+                      <div class="form">
+                        <input type="text" id="gastoTipo" name="gastoTipo" autocomplete="off" required />
+                        <label for="gastoTipo" class="label-name" >
+                          <span class="content-name">
+                            Tipo
+                          </span>
+                        </label>
+                      </div>
+                    <div class="btn-area">
+                    <div class="button" id="gastosSubmit" type="submit">
+                        <div class="button__line"></div>
+                        <div class="button__line"></div>
+                        <span class="button__text">CONFIRMAR</span>
+                        <div class="button__drow1"></div>
+                        <div class="button__drow2"></div>
+                    </div>
+                    <p class="aaa">/</p>
+                    <a href="gastos.html">
+                    <div class="button" >
+                        <div class="button__line"></div>
+                        <div class="button__line"></div>
+                        <span class="button__text">EDITAR </span>
+                        <div class="button__drow1"></div>
+                        <div class="button__drow2"></div>
+                    </div>
+                  </a>
+                </div>
+               </div>  
+            </div>
+        </section>
+      </section>
+    </main>
+    <script src="login.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>

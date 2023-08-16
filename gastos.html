@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seus gastos</title>
+    <link rel="stylesheet" href="gastos.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="logo">
+                <div><img src="logo.png" alt="" width="130px"></div>
+            </div>
+            <div class="menu">
+                <img class="menu-opener" src="assets/img/menu.png" />
+                <nav>
+                    <ul>
+                        <li ><a href="index.html">Home</a></li>
+                        <li class="active"><a href="gastos.html">Seus Gastos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="aviso-box" id="aviso">
+            <div class="aviso-content">
+                <h2>Aviso:</h2>
+                <p>Você precisa cadastrar seus dados na página principal e na página de renda! Como os dados não estão
+                    cadastrados serão apresentados dados de teste nessa página.</p>
+            </div>
+        </section>
+        <section class="controle-box">
+            <h1>Controle Financeiro</h1>
+            <p>Caso tenha cadastrado um orçamento mensal no formulário de objetivos, o restante do valor após a subtração dos gastos será utilizado como saldo de poupança.<br>Caso tenha informado o quanto quer poupar, seja uma porcentagem da renda ou um valor fixo, esse valor será adicionado ao saldo de poupança a cada mês. </p>
+            <div class="controle-content">
+                
+                <div class="side-results">
+                    <div class="poupanca">
+                        <p>Saldo de poupança*: <br><span class="fw-bold" id="poupadoApresentacao"></span></p>
+                    </div>
+                    <div class="meta">
+                        <p>Faltam:<br>
+                            <span class="fw-bold" id="apresentacaoFaltaQuanto"></span><br>
+                            para sua meta
+                        </p>
+                    </div>
+                </div>
+                <div class="center-results">
+                    <div class="center-box">
+                        <p>Sua renda mensal é: <span class="fw-bold" id="apresentacaoRenda"></span></p>
+                    </div>
+                    <div class="center-box">
+                        <p>Seu limite de gastos esse mês é: <span class="fw-bold"
+                                id="apresentacaoLimiteDeGastos"></span></p>
+                    </div>
+                    <div class="center-box">
+                        <p>Sua meta financeira é: <span class="fw-bold" id="apresentacaoMeta"></span></p>
+                    </div>
+                    <div class="center-box">
+                        <p>Total gasto esse mês: <span class="fw-bold" id="apresentacaoTotalGastos"></span></p>
+                    </div>
+                    <div class="center-box">
+                        <p>Restante do limite de gastos desse mês: <span class="fw-bold"
+                                id="apresentacaoRestanteLimiteDeGastos"></span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="double-box"> 
+        <section class="simulacao-box">
+            <h1>Simulação Financeira</h1>
+            <div class="simulacao-content">
+                <div class="form-select">
+                    <select class="" id="valorInput">
+                        <!--Nome padrão-->
+                        <option selected>Valor</option>
+                        <!--Opções de valor (usar a propriedade value no script)-->
+                        <option value="1">Meta financeira</option>
+                        <option value="2">Poupado</option>
+                    </select>
+                </div>
+                <div class="form-select">
+                    <select class="" aria-label="Default select example" id="aplicacaoInput">
+                        <!--Nome padrão-->
+                        <option selected>Aplicação</option>
+                        <!--Opções de aplicação (usar a propriedade value no script)-->
+                        <option value="1">Tesouro Direto - Prefixado 2029</option>
+                        <option value="2">Tesouro Selic</option>
+                    </select>
+                </div>
+                <div class="range-area">
+                    <p>Período: <br id="teste1"><span id="valorSlider"></span> anos</p>
+                    <div type="range" name="" id="slider"> </div>
+                </div>
+                <div class="btn-grafico">
+                    <button id="gerarGrafico">Gerar Gráfico</button>
+                    <button id="limparGrafico">Limpar Gráfico</button>
+                </div>
+                <br>
+                <br>
+                <div class="grafico">
+                    <canvas id="graficoAplicacao"></canvas>
+                </div>
+            </div>
+            
+        </section>
+        <section class="categoria-box">
+            <h1>Gastos por categoria</h1>
+            <div class="grafico2">
+                <canvas id="graficoCategorias"></canvas>
+            </div>
+        </section>
+    </section>
+        <section class="gastos-box">
+            <h1>Seus Gastos</h1>
+            <div class="gastos-content">
+                <div class="gastos-top">
+                    <h3>Filtros:</h3>
+                    <select class="form-select" id="filtroCategoria">
+                        <option selected value="0">Categoria</option>
+                    </select>
+                    <select class="form-select" id="filtroPreco">
+                        <option selected value="0">Preço</option>
+                        <option value="1">Até R$100.00</option>
+                        <option value="2">De R$100.00 Até R$500.00</option>
+                        <option value="3">Mais de R$500.00</option>
+                    </select>
+                </div>
+                <div class="table-gastos">
+                    <table class="styled-table" id="gastos-table">
+                        <!--TITULO DAS COLUNAS-->
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Excluir</th>
+                                <th scope="col">Editar</th>
+                            </tr>
+                        </thead>
+                        <!--GASTOS-->
+                        <tbody id="gastos-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="gastos.js"></script>
+</body>
+
+</html>
